@@ -1,0 +1,153 @@
+$very_dark_desaturated_blue: hsl(238, 29%, 16%)
+$soft_red: hsl(14, 88%, 65%)
+$soft_violet: hsl(273, 75%, 66%)
+$soft_blue: hsl(240, 73%, 65%)
+$very_dark_grayish_blue: hsl(237, 12%, 33%)
+$dark_grayish_blue: hsl(240, 6%, 50%)
+$light_grayish_blue: hsl(240, 5%, 91%)
+$font_size: 12px
+$font_family: 'Kumbh Sans', sans-serif
+
+*,
+*::after,
+*::before
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+html,
+body
+  height: 100%
+
+body
+  font-family: $font_family
+  font-size: $font_size
+  line-height: 1.2
+  background-image: linear-gradient(to bottom, #af67e9, #9f67e9, #8d66e9, #7a66e8, #7c61e4)
+  color: $dark_grayish_blue
+
+a
+  text-decoration: none
+  color: $very_dark_desaturated_blue
+
+dl
+  display: flex
+  flex-direction: column
+  gap: 16px
+  padding-left: 6px
+  padding-right: 6px
+
+dd
+  display: none
+  position: relative
+  top: -8px
+  line-height: 16px
+  font-size: 12px
+
+dt
+  font-size: 13px
+  border-bottom: 1px solid $light_grayish_blue
+  padding-bottom: 16px
+  cursor: pointer
+
+  .title
+    display: block
+    color: $very_dark_desaturated_blue
+
+    &::after
+      content: ''
+      float: right
+      transform: rotate(224deg)
+      width: 7px
+      height: 7px
+      border-top: 2px solid $soft_red
+      border-left: 2px solid $soft_red
+      opacity: .8
+      border-bottom-left-radius: 1px
+      border-top-right-radius: 1px
+      position: relative
+
+  &:target
+    font-weight: 700
+    border-bottom: 0
+    padding-bottom: 0
+
+    .title::after
+      animation: rotateAnimation 1s ease 0s 1 normal forwards
+      top: 7px
+
+    + dd
+      border-bottom: 1px solid $light_grayish_blue
+      padding-bottom: 18px
+      display: block
+
+      animation: toggle 1s ease 0s 1 normal forwards
+
+.container
+  max-width: 1220px
+  margin: 0 auto
+  padding: 24px 23px
+
+  .card
+    width: 328px
+    display: grid
+    grid-template-columns: repeat(13, 1fr)
+    grid-template-rows: auto auto 1fr
+    row-gap: 14px
+
+    h1
+      text-align: center
+      font-size: 32px
+      margin-top: 16px
+      margin-bottom: 35px
+      color: $very_dark_desaturated_blue
+
+    header
+      grid-column: 3/12
+      grid-row: 1/3
+      z-index: 1
+      position: relative
+
+      figure
+        + img
+          position: absolute
+          bottom: -35px
+
+    &-body
+      background: green
+      background-color: white
+      padding: 0 20px 20px
+      height: 535px
+      grid-column: 1/14
+      grid-row: 2/4
+      border-radius: 25px
+
+      display: flex
+      flex-direction: column
+      justify-content: end
+      box-shadow: #3434af 0px 20px 30px -10px
+
+    &-content
+      height: 400px
+
+    &-img
+      > img
+        max-width: 100%
+        display: block
+        margin: -12px auto 0
+
+@keyframes toggle
+  0%
+   opacity: 0
+   transform: translateY(0)
+   
+  100%
+    transform: translateY(4px)
+    opacity: 1
+
+@keyframes rotateAnimation
+  0%
+    transform: rotate(224deg)
+  100%
+    transform: rotate(46deg)
+    
