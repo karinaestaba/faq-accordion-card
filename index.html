@@ -13,12 +13,21 @@
 <body>
   <main class="container">
     <article class="card">
+      <figure class="floating-box">
+        <img src="assets/images/illustration-box-desktop.svg" alt="Box"  width="170">
+      </figure>
       <header>
-        <figure class="card-img">
+        <picture class="card-img">
+          <source srcset="assets/images/illustration-woman-online-mobile.svg" media="(max-width: 997px)">
+          <source srcset="assets/images/illustration-woman-online-desktop.svg">
           <img src="assets/images/illustration-woman-online-mobile.svg" alt="Ilustration woman online" width="250">
-        </figure>
+        </picture>
 
-        <img src="assets/images/bg-pattern-mobile.svg" alt="Ilustration woman online" width="230">
+        <picture>
+          <source srcset="assets/images/bg-pattern-mobile.svg" media="(max-width: 997px)">
+          <source srcset="assets/images/bg-pattern-desktop.svg">
+          <img src="assets/images/bg-pattern-mobile.svg" alt="Ilustration woman online" width="230">
+        </picture>
       </header>
       <div class="card-body">
         <div class="card-content">

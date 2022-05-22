@@ -54,6 +54,10 @@ dt
     display: block
     color: $very_dark_desaturated_blue
 
+    &:hover
+      color: $soft_red
+      transition: color 1s
+
     &::after
       content: ''
       float: right
@@ -94,6 +98,7 @@ dt
     grid-template-columns: repeat(13, 1fr)
     grid-template-rows: auto auto 1fr
     row-gap: 14px
+    margin: 0 auto
 
     h1
       text-align: center
@@ -108,20 +113,18 @@ dt
       z-index: 1
       position: relative
 
-      figure
-        + img
+      picture
+        + picture
           position: absolute
           bottom: -35px
 
     &-body
-      background: green
       background-color: white
       padding: 0 20px 20px
       height: 535px
       grid-column: 1/14
       grid-row: 2/4
       border-radius: 25px
-
       display: flex
       flex-direction: column
       justify-content: end
@@ -135,6 +138,9 @@ dt
         max-width: 100%
         display: block
         margin: -12px auto 0
+  
+.floating-box
+  display: none
 
 @keyframes toggle
   0%
@@ -150,4 +156,92 @@ dt
     transform: rotate(224deg)
   100%
     transform: rotate(46deg)
+
+@keyframes floating
+  0%
+    transform: translateY(0)
+
+  50%
+    transform: translateY(-20px)
     
+  100%
+    transform: translateY(0)
+
+@media (min-width: 998px)
+  body
+    background-image: linear-gradient(to bottom, #ab68eb, #9d67ea, #8f66ea, #7f65e8, #6e64e7)
+
+  .container
+    display: flex
+    justify-content: center
+    height: 100%
+
+    .card
+      width: 920px
+      max-width: 90%
+      background-color: white
+      border-radius: 25px
+      box-shadow: #3434af 0px 20px 30px -10px
+
+      grid-template-areas: "c-img c-text"
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 1fr
+      align-self: center
+      position: relative
+
+      header
+        grid-area: c-img
+        display: flex
+        align-items: center
+        overflow: hidden
+
+        picture
+          + picture
+            bottom: -3px
+            left: -55px
+
+            img
+              width: 456px
+
+      &-body
+        grid-area: c-text
+        background: none
+        box-shadow: none
+        height: auto
+        min-height: 509px
+        padding-top: 48px
+
+      &-content
+        height: 100%
+        width: 336px
+
+      &-img
+        > img
+          width: 562px
+          margin-left: -87px
+          max-width: 104%
+
+      h1
+        text-align: left
+        margin-bottom: 38px
+
+  dl
+    padding-left: 0
+
+  dt
+    font-size: 14px
+
+    &:target
+      picture
+        padding-bottom: 21px
+
+  .floating-box
+    display: block
+    position: absolute
+    left: -94px
+    bottom: 121px
+    z-index: 100
+    animation: floating 6s ease-in-out infinite
+
+    > img
+      width: 190px
